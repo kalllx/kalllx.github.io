@@ -42,7 +42,7 @@
         <label for="inputMobile" >手机号</label>
         <input type="mobile" id="inputMobile" class="form-control" placeholder="请输入手机号" required autofocus>
         <label for="inputIDCard"  >身份证号码</label>
-        <input type="text" id="inputIDCard" class="form-control" placeholder="请输入要学习的生分证号码" required>
+        <input type="text" id="inputIDCard" class="form-control" placeholder="请输入要学习的身份证号码" required>
  	<label for="inputpwd"  >学习系统密码</label>
         <input type="text" id="inputpwd" class="form-control" placeholder="请输入网络学习系统的密码" required>
         <label for="inputInvitMobile"  >邀请人手机号</label>
@@ -95,13 +95,22 @@ function save(){
   
   var TestObject = AV.Object.extend('student');
 var testObject = new TestObject();
+ if(document.getElementById("inputpwd").value==""){
+ alert("网络学习密码不能为空")；
+ return false;
+ }
+	if(document.getElementById("inputIDCard").value==""){
+ alert("身份证号码不能为空")；
+ return false;
+ }
+	
 testObject.save({
   mobile: document.getElementById("inputMobile").value,
   pwd:document.getElementById("inputpwd").value,
   idCard:document.getElementById("inputIDCard").value,
   invitMobile:document.getElementById("inputInvitMobile").value,
 }).then(function(object) {
-  alert('代打开服务已经提交成功，请按照右侧说文字进行指导操作！,如有疑问，请联系客服');
+  alert('代打开服务已经提交成功，请按照说名进行操作指导！,如有疑问，请联系客服');
 });
 return false;
 }
