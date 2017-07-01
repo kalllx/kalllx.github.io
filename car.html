@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+
+    <title>服务信息登记</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  
+
+  <style type="text/css">
+  	li{padding-top: 20px;}
+  </style>
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			
+
+ <form class="form-signin" onsubmit="return save();">
+        <h2 class="form-signin-heading" class="text-center">服务信息登记</h2>
+        <label for="inputMobile" >手机号</label>
+        <input type="mobile" id="inputMobile" class="form-control" placeholder="请输入手机号" required autofocus>
+        <label for="inputIDCard"  >身份证号码</label>
+        <input type="text" id="inputIDCard" class="form-control" placeholder="请输入要学习的生分证号码" required>
+ 	<label for="inputpwd"  >学习系统密码</label>
+        <input type="text" id="inputpwd" class="form-control" placeholder="请输入网络学习系统的密码" required>
+        <label for="inputInvitMobile"  >邀请人手机号</label>
+        <input type="text" id="inputInvitMobile" class="form-control" placeholder="请输入邀请人手机号" >
+       
+        <button class="btn btn-lg btn-primary btn-block" >提交</button>
+      </form>
+			
+		</div>
+		<div class="col-sm-6">
+		<h3>说明</h3>
+		<p>
+	
+		<ol> 
+      <li>按照各地网络学习规则，每天为大家学习满当天的网络课程</li> 
+      <li>学习期间请不要登录自己的账号，否则学习进程有可能中断</li> 
+
+      <li>代打卡服务10元/小时，14个小时一次性付清，优惠价100元<br/>扫描或长按下图进行微信支付，支付时留言填上手机号和要打卡时长；<br/>如 15065763455-3,支付30元即可带打卡3小时 <img style ="width: 200px;height: 200px" alt="140x140" src="http://osdebdgc3.bkt.clouddn.com/sk.png" class="img-rounded img-responsive col-sm-offset-2" />
+     
+      </li> 
+      <li>每邀请一位新用户，返新用户所有服务费用20%给邀请人</li> 
+      <li><strong>服务使用前，请务必先添加如下客服微信号，以获取相应指导：</strong><br/>
+      <img style ="width: 100px;height: 100px" alt="140x140" src="http://osdebdgc3.bkt.clouddn.com/kf.jpg" class="img-rounded col-sm-offset-2" />
+      长按识别二维码
+
+      </li> 
+    
+</ol>
+
+</p>
+			
+			 
+		</div>
+	</div>
+</div>
+
+  </body>
+  <script src="http://cdn1.lncld.net/static/js/3.0.1/av-min.js"></script>
+  <script type="text/javascript">
+    
+    var APP_ID = '9HlTD5vPQClPpok48IVSX8MQ-gzGzoHsz';
+var APP_KEY = 'nBOFMW7mAkVjFWl3EsUxlLdJ';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
+function save(){
+  
+  var TestObject = AV.Object.extend('student');
+var testObject = new TestObject();
+testObject.save({
+  mobile: document.getElementById("inputMobile").value,
+  pwd:document.getElementById("inputpwd").value,
+  idCard:document.getElementById("inputIDCard").value,
+  invitMobile:document.getElementById("inputInvitMobile").value,
+}).then(function(object) {
+  alert('代打开服务已经提交成功，请按照右侧说文字进行指导操作！,如有疑问，请联系客服');
+});
+return false;
+}
+
+  </script>
+
+</html>
